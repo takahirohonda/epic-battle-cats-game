@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14% 4%;
+  --muted: 60 5% 96%;
+  --muted-foreground: 25 5% 45%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14% 4%;
+  --border: 20 6% 90%;
+  --input: 20 6% 90%;
+  --primary: 14 100% 57%; /* #FF6B35 */
+  --primary-foreground: 0 0% 98%;
+  --secondary: 175 58% 60%; /* #4ECDC4 */
+  --secondary-foreground: 0 0% 9%;
+  --accent: 54 100% 68%; /* #FFE66D */
+  --accent-foreground: 20 14% 4%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 20 14% 4%;
+  --radius: 0.5rem;
+
+  /* Game specific colors */
+  --game-bg: 210 22% 22%; /* #2C3E50 */
+  --game-surface: 210 18% 28%; /* #34495E */
+  --game-text: 210 13% 76%; /* #BDC3C7 */
+}
+
+.dark {
+  --background: 210 22% 22%;
+  --foreground: 0 0% 98%;
+  --muted: 210 18% 28%;
+  --muted-foreground: 210 13% 76%;
+  --popover: 210 22% 22%;
+  --popover-foreground: 0 0% 98%;
+  --card: 210 18% 28%;
+  --card-foreground: 0 0% 98%;
+  --border: 210 18% 28%;
+  --input: 210 18% 28%;
+  --primary: 14 100% 57%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 175 58% 60%;
+  --secondary-foreground: 0 0% 9%;
+  --accent: 54 100% 68%;
+  --accent-foreground: 20 14% 4%;
+  --destructive: 0 62% 31%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 210 13% 76%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .game-bg {
+    background-color: hsl(var(--game-bg));
+  }
+  
+  .game-surface {
+    background-color: hsl(var(--game-surface));
+  }
+  
+  .game-text {
+    color: hsl(var(--game-text));
+  }
+
+  .font-game {
+    font-family: 'Fredoka One', cursive;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 1s ease-in-out infinite;
+  }
+
+  .animate-attack {
+    animation: attack 0.6s ease-in-out;
+  }
+
+  .animate-damage {
+    animation: damage 0.5s ease-in-out;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+  }
+
+  @keyframes attack {
+    0% { transform: translateX(0) scale(1); }
+    50% { transform: translateX(10px) scale(1.1); }
+    100% { transform: translateX(0) scale(1); }
+  }
+
+  @keyframes damage {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+  }
+}
